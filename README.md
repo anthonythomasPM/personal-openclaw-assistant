@@ -11,12 +11,14 @@ A personal AI assistant that monitors inputs (email, schedules, data files), tak
 Core automations:
 - Weekly Sunday briefing covering upcoming parking suspensions, birthdays, events, and reminders for the week ahead
 - Birthday tracker with tiered advance alerts (day-of, 1 week, 2 weeks prior)
-- Email-to-event pipeline that parses forwarded event emails into structured calendar entries with venue, time, and guests
+- Email pipeline that parses forwarded event or meeting emails into structured calendar entries with relevant details (e.g. venue, time, and guests)
 - NYC alternate side parking suspension tracking across the full calendar year, mapped to my specific street sides
 
 ## Product Decisions Worth Noting
 - Dedicated bot email address restricted to an approved sender list — reduces prompt injection risk and limits the agent's data access to only emails I explicitly forward. Inspired by TripIt's model of forwarding confirmations to a parsing address rather than granting broad inbox access
 - VPS hosting via Hostinger rather than a personal device — isolates the agent from broader device access and reduces risk during OpenClaw's beta period
+- Optimized for costs by reducing OpenClaw heartbeat from 30 minutes to 8 hours, which is adequate for current use cases
+- Switched models from Claude Opus to Sonnet for cost optimization purposes
 
 ## Integrations
 - Google Calendar via API — creates events automatically from parsed emails
@@ -25,4 +27,4 @@ Core automations:
 - Syncs to GitHub — agent workspace version-controlled for transparency and recovery
 
 ## Built With
-OpenClaw (agent framework), Claude (Anthropic), Google Calendar API, Gmail, Telegram, Himalaya CLI
+OpenClaw (agent framework), Claude (Anthropic), Google Calendar API, Gmail, Telegram
